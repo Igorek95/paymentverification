@@ -1,0 +1,26 @@
+{% extends 'payment/layout.html' %}
+
+{% block content %}
+
+<head>
+    <title>Просмотр реквизита</title>
+
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Детали реквизита</h1>
+        <p class="text-center">Пользователь: {{ payment_requisite.user }}</p>
+        <p class="text-center">Тип платежа: {{ payment_requisite.payment_type }}</p>
+        <p class="text-center">Тип счета: {{ payment_requisite.account_type }}</p>
+        <p class="text-center">Имя владельца: {{ payment_requisite.owner_name }}</p>
+
+        {% if user.is_staff %}
+            <a href="{% url 'payment:payment_requisite_update' payment_requisite.id %}" class="btn btn-warning btn-block">Изменить</a>
+            <a href="{% url 'payment:payment_requisite_delete' payment_requisite.id %}" class="btn btn-danger btn-block">Удалить</a>
+        {% endif %}
+
+        <a href="{% url 'payment:payment_requisite_list' %}" class="btn btn-primary btn-block">Назад</a>
+    </div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'payment/layout.html' %}
+
+{% block content %}
+<head>
+    <title>Удаление реквизитов</title>
+
+</head>
+<body>
+    <h2 class="text-center">Подтвердите удаление реквизитов на платеж</h2>
+ <p class="text-center">Вы уверены, что хотите удалить эту реквизиты на платеж?</p>
+    <form method="post" class="form text-center">
+        {% csrf_token %}
+        <input type="hidden" name="post" value="true">
+        <button type="submit" class="btn btn-danger text-center">Удалить</button>
+        <a href="{% url 'payment:payment_request_detail' object.pk %}" class="btn btn-secondary text-center">Отмена</a>
+    </form>
+
+</body>
+{% endblock %}
+

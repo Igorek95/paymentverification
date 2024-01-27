@@ -1,0 +1,38 @@
+{% extends 'payment/layout.html' %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">Payment Requests List</h2>
+
+        <div class="d-flex justify-content-center mb-4">
+            <a href="{% url 'payment:payment_request_create' %}" class="btn btn-success">Создать</a>
+        </div>
+
+        <table class="table table-bordered table-hover mx-auto">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th class="text-center">Amount</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Requisites</th>
+                    <th class="text-center">User</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in payment_requests %}
+                    <tr>
+                        <th scope="row">{{ request.id }}</th>
+                        <td>{{ request.amount }}</td>
+                        <td>{{ request.status }}</td>
+                        <td>{{ request.requisites }}</td>
+                        <td>{{ request.user }}</td>
+                        <td class="text-center">
+                            <a href="{% url 'payment:payment_request_detail' request.id %}" class="btn btn-primary btn-sm">Подробнее</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

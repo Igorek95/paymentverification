@@ -1,0 +1,12 @@
+{% extends 'payment/layout.html' %}
+
+{% block content %}
+  <h2 class="text-center">{{ form_title }}</h2>
+  <form method="post" class="form text-center">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Подтвердить</button>
+    <a href="{% url 'payment:payment_requisite_detail' object.pk %}" class="btn btn-secondary text-center">Отмена</a>
+
+  </form>
+{% endblock %}

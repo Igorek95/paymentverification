@@ -1,0 +1,16 @@
+
+<tbody>
+  {% for payment_requisite in payment_requisites %}
+    <tr>
+      <th scope="row">{{ payment_requisite.id }}</th>
+      <td>{{ payment_requisite.payment_type }}</td>
+      <td>{{ payment_requisite.account_type }}</td>
+      <td>{{ payment_requisite.owner_name }}</td>
+      <td>{{ payment_requisite.phone_number }}</td>
+      <td>{{ payment_requisite.limit }}</td>
+      <td>
+        <a href="{% url 'payment:payment_requisite_detail' payment_requisite.id %}" class="btn btn-info">Подробнее</a>
+      </td>
+    </tr>
+  {% endfor %}
+</tbody>
